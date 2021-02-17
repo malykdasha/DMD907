@@ -1,9 +1,11 @@
 import pygame
-from Enemy import EnemyClass
 from Player import PlayerClass
 from PlayerHandler import PlayerHandlerClass
 from ExitHander import ExitHandlerClass
 from Spawner import SpawnerClass
+# from GameOver import GameOverClass
+# я его доделаю и залью
+from Health import HealthClass
 
 
 class GameClass:
@@ -22,13 +24,12 @@ class GameClass:
         self.PURPURN = (255, 204, 204)
 
         self.running = True
-        enemy1 = EnemyClass(50, 0, 10, self)
-        enemy2 = EnemyClass(150, 0, 5, self)
-        enemy3 = EnemyClass(250, 0, 3, self)
 
         self.player = PlayerClass(self)
 
-        self.objects = [enemy1, enemy2, enemy3, self.player]
+        self.health = HealthClass(self)
+
+        self.objects = [self.player, self.health]
 
         player_handler = PlayerHandlerClass(self)
         exit_handler = ExitHandlerClass(self)
@@ -36,6 +37,7 @@ class GameClass:
 
         self.scripts = [SpawnerClass(self)]
 
+        # self.g = GameOverClass(self)
 
     def fps(self):
         self.clock.tick(self.FPS)
@@ -62,6 +64,9 @@ class GameClass:
 
         pygame.display.flip()
 
+    # def game_over(self):
+    #     self.g.run()
+
     def start(self):
         while self.running:
             self.fps()
@@ -69,3 +74,4 @@ class GameClass:
             self.events()
             self.update()
             self.draw()
+            # self.game_over()
