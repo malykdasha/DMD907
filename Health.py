@@ -2,6 +2,8 @@ import pygame
 from Object import ObjectClass
 from Enemy import EnemyClass
 # import time для отслеживания задеваний
+pygame.mixer.init()
+s = pygame.mixer.Sound('Звук_урона_в_Майнкрафт.wav')
 
 
 class HealthClass(ObjectClass):
@@ -25,5 +27,8 @@ class HealthClass(ObjectClass):
                         if len(self.health) == 1:
                             self.game.running = False
                         else:
+
                             self.health.pop()
                             self.game.objects.remove(enemy)
+                            s.play()
+                            
