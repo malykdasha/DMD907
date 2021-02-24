@@ -4,6 +4,11 @@ from Enemy import EnemyClass
 # import time для отслеживания задеваний
 pygame.mixer.init()
 s = pygame.mixer.Sound('Звук_урона_в_Майнкрафт.wav')
+l = pygame.mixer.Sound('lazha.wav')
+pygame.font.init()
+
+font = pygame.font.Font(None, 72)
+text_surface = font.render('GAME OVER!', True, (255, 0, 0))
 
 
 class HealthClass(ObjectClass):
@@ -25,6 +30,10 @@ class HealthClass(ObjectClass):
                     if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:
                         # time.sleep(2)
                         if len(self.health) == 1:
+                            self.game.screen.blit(text_surface, (20, 160))
+                            pygame.display.update()
+                            l.play()
+                            pygame.time.wait(4000)
                             self.game.running = False
                         else:
 
