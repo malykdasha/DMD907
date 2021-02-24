@@ -6,6 +6,9 @@ from Spawner import SpawnerClass
 # from GameOver import GameOverClass
 # я его доделаю и залью
 from Health import HealthClass
+from random import randint
+
+
 
 
 class GameClass:
@@ -24,7 +27,7 @@ class GameClass:
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
 
-        self.PURPURN = (255, 204, 204)
+        self.PURPURN = (randint(0, 255), randint(0, 204), randint(0, 204))
 
         self.running = True
 
