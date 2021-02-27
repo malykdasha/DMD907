@@ -15,7 +15,7 @@ class EnemyClass(ObjectClass):
         super().__init__(game)
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (255, 0, 0), (self.x, self.y, 10, 10))
+        pygame.draw.rect(self.game.screen, (200, 200, 200), (self.x, self.y, 10, 10))
 
     def update(self):
         self.y += self.vy

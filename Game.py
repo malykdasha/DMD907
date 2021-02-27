@@ -27,7 +27,7 @@ class GameClass:
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
 
-        self.PURPURN = (randint(0, 255), randint(0, 204), randint(0, 204))
+        self.PURPURN = (0, 0, 100)
 
         self.running = True
 
