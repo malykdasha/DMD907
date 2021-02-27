@@ -32,6 +32,7 @@ class HealthClass(ObjectClass):
                         if len(self.health) == 1:
                             self.game.screen.blit(text_surface, (20, 160))
                             pygame.display.update()
+                            pygame.mixer.music.pause()
                             l.play()
                             pygame.time.wait(4000)
                             self.game.running = False

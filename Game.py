@@ -20,7 +20,7 @@ class GameClass:
         # создаем игру и окно
         pygame.init()
         pygame.mixer.init()  # для звука
-        pygame.mixer.music.load('8-Bit Universe - Billie Jean.mp3')
+        pygame.mixer.music.load('PPK - Ressurection .mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
