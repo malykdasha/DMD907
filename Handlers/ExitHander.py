@@ -1,5 +1,5 @@
 import pygame
-from Handler import HandlerClass
+from Handlers.Handler import HandlerClass
 
 
 class ExitHandlerClass(HandlerClass):

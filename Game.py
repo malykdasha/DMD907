@@ -1,14 +1,11 @@
 import pygame
-from Player import PlayerClass
-from PlayerHandler import PlayerHandlerClass
-from ExitHander import ExitHandlerClass
-from Spawner import SpawnerClass
+from Objects.Player import PlayerClass
+from Handlers.PlayerHandler import PlayerHandlerClass
+from Handlers.ExitHander import ExitHandlerClass
+from Scripts.Spawner import SpawnerClass
 # from GameOver import GameOverClass
 # я его доделаю и залью
-from Health import HealthClass
-from random import randint
-
-
+from Objects.Health import HealthClass
 
 
 class GameClass:
@@ -20,7 +17,7 @@ class GameClass:
         # создаем игру и окно
         pygame.init()
         pygame.mixer.init()  # для звука
-        pygame.mixer.music.load('PPK - Ressurection .mp3')
+        pygame.mixer.music.load('Sources/PPK - Ressurection .mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))

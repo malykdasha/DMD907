@@ -1,5 +1,5 @@
 import pygame
-from Object import ObjectClass
+from Objects.Object import ObjectClass
 
 
 # self.x положение на экране в данный момент времени

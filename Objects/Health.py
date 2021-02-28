@@ -1,10 +1,10 @@
 import pygame
-from Object import ObjectClass
-from Enemy import EnemyClass
+from Objects.Object import ObjectClass
+from Objects.Enemy import EnemyClass
 # import time для отслеживания задеваний
 pygame.mixer.init()
-s = pygame.mixer.Sound('Звук_урона_в_Майнкрафт.wav')
-l = pygame.mixer.Sound('lazha.wav')
+s = pygame.mixer.Sound('Sources/Звук_урона_в_Майнкрафт.wav')
+l = pygame.mixer.Sound('Sources/lazha.wav')
 pygame.font.init()
 
 font = pygame.font.Font(None, 72)
