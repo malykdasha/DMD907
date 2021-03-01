@@ -2,12 +2,12 @@ import pygame
 from Objects.Player import PlayerClass
 from Handlers.PlayerHandler import PlayerHandlerClass
 from Handlers.ExitHander import ExitHandlerClass
-from Scripts.Spawner import SpawnerClass
+from Scripts.EnemySpawner import SpawnerClass
 from Objects.Timer import TimerClass
 from Scripts.CheckTouch import CheckTouchClass
-# from GameOver import GameOverClass
-# я его доделаю и залью
 from Objects.Health import HealthClass
+from Handlers.WeaponHandler import WeaponHandlerClass
+from Scripts.WeaponSpawner import WeaponSpawnerClass
 
 
 class GameClass:
@@ -15,8 +15,6 @@ class GameClass:
         self.WIDTH = 360  # ширина игрового окна
         self.HEIGHT = 480  # высота игрового окна
         self.FPS = 30  # частота кадров в секунду
-
-
         # создаем игру и окно
         pygame.init()
         pygame.font.init()  # для текста!
@@ -28,28 +26,26 @@ class GameClass:
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
-
         self.PURPURN = (0, 0, 100)
 
         self.is_running = True
         self.is_pause = False
 
         self.player = PlayerClass(self)
-
         self.health = HealthClass(self)
         self.timer = TimerClass(self)
 
         self.objects = [self.player, self.health, self.timer]
 
         player_handler = PlayerHandlerClass(self)
+        weapon_handler = WeaponHandlerClass(self)
         exit_handler = ExitHandlerClass(self)
-        self.handlers = [player_handler, exit_handler]
+        self.handlers = [player_handler, weapon_handler, exit_handler]
+
         self.spawner = SpawnerClass(self)
         self.check_touch = CheckTouchClass(self)
-
+        self.weapon_spawner = WeaponSpawnerClass(self)
         self.scripts = [self.spawner, self.check_touch]
-
-        # self.g = GameOverClass(self)
 
     def fps(self):
         self.clock.tick(self.FPS)

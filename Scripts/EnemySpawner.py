@@ -19,6 +19,6 @@ class SpawnerClass(ScriptClass):
         if self.time % self.tick == 0:
             enemy = EnemyClass(randint(0, self.game.WIDTH), -10, randint(1, 20), self.game)
             self.game.objects.append(enemy)
-        if self.time % self.tick == 1:
+        if self.time % 60 == 0:
             helper = HelperClass(randint(0, self.game.WIDTH), -10, 5, self.game)
             self.game.objects.append(helper)
