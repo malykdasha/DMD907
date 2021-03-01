@@ -1,7 +1,7 @@
 from Scripts.Script import ScriptClass
 from Objects.Enemy import EnemyClass
+from Objects.Helper import HelperClass
 from random import randint
-import pygame
 
 
 class SpawnerClass(ScriptClass):
@@ -19,3 +19,6 @@ class SpawnerClass(ScriptClass):
         if self.time % self.tick == 0:
             enemy = EnemyClass(randint(0, self.game.WIDTH), -10, randint(1, 20), self.game)
             self.game.objects.append(enemy)
+        if self.time % self.tick == 1:
+            helper = HelperClass(randint(0, self.game.WIDTH), -10, 5, self.game)
+            self.game.objects.append(helper)
