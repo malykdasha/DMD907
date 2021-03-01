@@ -1,14 +1,5 @@
 import pygame
 from Objects.Object import ObjectClass
-from Objects.Enemy import EnemyClass
-# import time для отслеживания задеваний
-pygame.mixer.init()
-s = pygame.mixer.Sound('Sources/Звук_урона_в_Майнкрафт.wav')
-l = pygame.mixer.Sound('Sources/lazha.wav')
-pygame.font.init()
-
-font = pygame.font.Font(None, 72)
-text_surface = font.render('GAME OVER!', True, (255, 0, 0))
 
 
 class HealthClass(ObjectClass):
@@ -16,29 +7,9 @@ class HealthClass(ObjectClass):
         self.x = game.WIDTH / 2
         self.y = game.HEIGHT - 20
         self.radius = 10
-        self.health = list(range(1, int(10) + 1))
+        self.health = list(range(1, int(11)))
         super().__init__(game)
 
     def draw(self):
         for i in self.health:
             pygame.draw.circle(self.game.screen, (0, 0, 0), (i * 25, self.y), self.radius)
-
-    def update(self):
-        for enemy in self.game.objects:
-            if type(enemy) is EnemyClass:
-                if self.game.player.x - 10 <= enemy.x <= self.game.player.x + 40:
-                    if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:
-                        # time.sleep(2)
-                        if len(self.health) == 1:
-                            self.game.screen.blit(text_surface, (20, 160))
-                            pygame.display.update()
-                            pygame.mixer.music.pause()
-                            l.play()
-                            pygame.time.wait(4000)
-                            self.game.running = False
-                        else:
-
-                            self.health.pop()
-                            self.game.objects.remove(enemy)
-                            s.play()
-                            

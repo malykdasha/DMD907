@@ -7,4 +7,4 @@ class ExitHandlerClass(HandlerClass):
         for e in all_events:
             # проверить закрытие окна
             if e.type == pygame.QUIT:
-                self.game.running = False
+                self.game.is_running = False
