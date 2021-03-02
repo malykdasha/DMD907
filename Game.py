@@ -21,7 +21,7 @@ class GameClass:
         pygame.font.init()  # для текста!
         pygame.mixer.init()  # для звука
         pygame.mixer.music.load('Sources/PPK - Ressurection .mp3')
-        # pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
+        #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
@@ -80,8 +80,11 @@ class GameClass:
 
             self.screen.fill(self.PURPURN)
             start_button = ButtonClass(1, 1, 100, 20, 'sth', self)
+            end_button = ButtonClass(1, 30, 100, 20, 'sth', self)
             start_button.draw()
+            end_button.draw()
             start_button.is_pressed(self.start)
+            end_button.is_pressed(self.end)
             pygame.display.flip()
 
     def start(self):
@@ -94,3 +97,6 @@ class GameClass:
                 self.update()
                 self.draw()
             pygame.display.flip()
+
+    def end(self):
+        self.is_running = False
