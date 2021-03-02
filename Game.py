@@ -8,6 +8,7 @@ from Scripts.CheckTouch import CheckTouchClass
 from Objects.Health import HealthClass
 from Handlers.WeaponHandler import WeaponHandlerClass
 from Scripts.WeaponSpawner import WeaponSpawnerClass
+from Objects.Button import ButtonClass
 
 
 class GameClass:
@@ -69,6 +70,19 @@ class GameClass:
 
         for o in self.objects:
             o.draw()
+
+    def menu(self):
+        while self.is_running:
+            for events in pygame.event.get():
+                if events.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
+            self.screen.fill(self.PURPURN)
+            start_button = ButtonClass(1, 1, 100, 20, 'sth', self)
+            start_button.draw()
+            start_button.is_pressed(self.start)
+            pygame.display.flip()
 
     def start(self):
         while self.is_running:

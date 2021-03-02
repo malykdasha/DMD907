@@ -13,7 +13,7 @@ class ButtonClass(ObjectClass):
         super().__init__(game)
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (0, 0, 200), (self.x, self.y, self.w, self.h))
+        pygame.draw.rect(self.game.screen, (255, 0, 200), (self.x, self.y, self.w, self.h))
 
     def is_pressed(self, action):
         mouse = pygame.mouse.get_pos()
