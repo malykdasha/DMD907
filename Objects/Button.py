@@ -4,7 +4,7 @@ from Objects.Object import ObjectClass
 
 
 class ButtonClass(ObjectClass):
-    def __init__(self,x,y,w,h,text,game):
+    def __init__(self, x, y, w, h, text, game):
         self.x = x
         self.y = y
         self.w = w

@@ -8,7 +8,7 @@ from Objects.Helper import HelperClass
 class CheckTouchClass(ScriptClass):
     def __init__(self, game):
         super().__init__(game)
-        self.sound_of_touch = pygame.mixer.Sound('Sources/Звук_урона_в_Майнкрафт.wav')
+        self.sound_of_touch = pygame.mixer.Sound('Sources/Запись.wav')
 
     def run(self):
         for enemy in self.game.objects:

@@ -30,7 +30,7 @@ class GameClass:
         self.PURPURN = (0, 0, 100)
 
         self.is_running = True
-        self.is_pause = False
+        self.is_pause = True
 
         self.player = PlayerClass(self)
         self.health = HealthClass(self)
@@ -85,6 +85,7 @@ class GameClass:
             pygame.display.flip()
 
     def start(self):
+        self.is_pause = False
         while self.is_running:
             self.fps()
             self.run_scripts()
