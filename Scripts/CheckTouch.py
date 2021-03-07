@@ -11,22 +11,21 @@ class CheckTouchClass(ScriptClass):
         self.sound_of_touch = pygame.mixer.Sound('Sources/Запись.wav')
 
     def run(self):
-        for enemy in self.game.objects:
+        for enemy in self.game.current_level.objects:
             if type(enemy) is EnemyClass:
-                if self.game.player.x - 10 <= enemy.x <= self.game.player.x + 40:
+                if self.game.current_level.player.x - 10 <= enemy.x <= self.game.current_level.player.x + 40:
                     if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:
-                        self.game.health.health.pop()
-                        self.game.objects.remove(enemy)
+                        self.game.current_level.health.health.pop()
+                        self.game.current_level.objects.remove(enemy)
                         self.sound_of_touch.play()
-                        if len(self.game.health.health) == 0:
+                        if len(self.game.current_level.health.health) == 0:
                             # pygame.time.wait(4000)
                             # self.game.is_running = False
                             self.game.is_pause = True
                             GameOverClass(self.game).run()
             if type(enemy) is HelperClass:
-                if self.game.player.x - 10 <= enemy.x <= self.game.player.x + 40:
+                if self.game.current_level.player.x - 10 <= enemy.x <= self.game.current_level.player.x + 40:
                     if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:
-                        if len(self.game.health.health) != 10:
-                            self.game.health.health.append(len(self.game.health.health))
-                            self.game.objects.remove(enemy)
-                            # self.sound_of_touch.play()
+                        if len(self.game.current_level.health.health) != 10:
+                            self.game.current_level.health.health.append(len(self.game.current_level.health.health) + 1)
+                            self.game.current_level.objects.remove(enemy)

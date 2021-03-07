@@ -7,11 +7,11 @@ class PlayerHandlerClass(HandlerClass):
         for event in all_events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    self.game.player.vx -= 10
+                    self.game.current_level.player.vx -= 10
                 if event.key == pygame.K_d:
-                    self.game.player.vx += 10
+                    self.game.current_level.player.vx += 10
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_d:
-                    self.game.player.vx -= 10
+                    self.game.current_level.player.vx -= 10
                 if event.key == pygame.K_a:
-                    self.game.player.vx += 10
+                    self.game.current_level.player.vx += 10

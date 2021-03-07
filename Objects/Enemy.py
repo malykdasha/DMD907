@@ -6,14 +6,18 @@ from Objects.Object import ObjectClass
 
 
 class EnemyClass(ObjectClass):
-    def __init__(self, x, y, vy, game):
+    def __init__(self, x, y, vx, vy, game):
         self.x = x
         self.y = y
         self.vy = vy
+        self.vx = vx
         super().__init__(game)
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (200, 200, 200), (self.x, self.y, 10, 10))
+        pygame.draw.rect(self.game.screen, (200, 200, 200), (self.x, self.y, 50, 50))
 
     def update(self):
         self.y += self.vy
+        if self.x <= 0 or self.x >= self.game.WIDTH - 50:
+            self.vx = - self.vx
+        self.x += self.vx

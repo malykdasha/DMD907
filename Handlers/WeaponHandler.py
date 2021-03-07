@@ -7,4 +7,4 @@ class WeaponHandlerClass(HandlerClass):
         for event in all_events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
-                    self.game.weapon_spawner.run()
+                    self.game.current_level.weapon_spawner.run()
