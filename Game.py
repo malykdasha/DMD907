@@ -12,8 +12,8 @@ class GameClass:
         pygame.init()
         pygame.font.init()  # для текста!
         pygame.mixer.init()  # для звука
-        pygame.mixer.music.load('Sources/PPK - Ressurection .mp3')
-        # pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
+        pygame.mixer.music.load('Sources/PPK - Ressurection .wav')
+        #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
@@ -49,19 +49,23 @@ class GameClass:
         for o in self.current_level.objects:
             o.draw()
 
-    # def menu(self):
-    #     while self.is_running:
-    #         for events in pygame.event.get():
-    #             if events.type == pygame.QUIT:
-    #                 self.is_running = False
-    #                 # pygame.quit()
-    #                 # quit()
-    #
-    #         self.screen.fill(self.PURPURN)
-    #         start_button = ButtonClass(1, 1, 100, 20, 'sth', self)
-    #         start_button.draw()
-    #         start_button.is_pressed(self.start)
-    #         pygame.display.flip()
+    def menu(self):
+        while self.is_running:
+            for events in pygame.event.get():
+                if events.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
+            self.screen.fill(self.PURPURN)
+            start_button = ButtonClass(1, 150, 100, 20, 'self', self)
+            end_button = ButtonClass(259, 150, 100, 20, 'self', self)
+            start_button.draw()
+            start_button.write(24, 'Start game')
+            end_button.draw()
+            end_button.write(24, 'Quit game')
+            start_button.is_pressed(self.start)
+            end_button.is_pressed(self.end)
+            pygame.display.flip()
 
     def start(self):
         self.is_pause = False
@@ -73,3 +77,6 @@ class GameClass:
                 self.update()
                 self.draw()
             pygame.display.flip()
+
+    def end(self):
+        self.is_running = False
