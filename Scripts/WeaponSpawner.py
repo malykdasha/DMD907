@@ -4,5 +4,9 @@ from Objects.Weapon import WeaponClass
 
 class WeaponSpawnerClass(ScriptClass):
     def run(self):
-        weapon = WeaponClass(self.game.current_level.player.x, self.game.current_level.player.y, -30, self.game)
+        weapon = WeaponClass(x=self.game.current_level.player.x + self.game.current_level.player.width/2,
+                             y=self.game.current_level.player.y,
+                             vy=-30,
+                             game=self.game)
+        self.game.current_level.weapon.append(weapon)
         self.game.current_level.objects.append(weapon)

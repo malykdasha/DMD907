@@ -13,8 +13,10 @@ class CheckTouchClass(ScriptClass):
     def run(self):
         for enemy in self.game.current_level.objects:
             if type(enemy) is EnemyClass:
-                if self.game.current_level.player.x - 10 <= enemy.x <= self.game.current_level.player.x + 40:
-                    if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:
+                if self.game.current_level.player.x - enemy.width <= enemy.x \
+                        <= self.game.current_level.player.x + self.game.current_level.player.width:
+                    if self.game.current_level.player.y - enemy.height <= enemy.y \
+                            <= self.game.current_level.player.y + self.game.current_level.player.height:
                         self.game.current_level.health.health.pop()
                         self.game.current_level.objects.remove(enemy)
                         self.sound_of_touch.play()
@@ -23,6 +25,11 @@ class CheckTouchClass(ScriptClass):
                             # self.game.is_running = False
                             self.game.is_pause = True
                             GameOverClass(self.game).run()
+
+                for weapon in self.game.current_level.weapon:
+                    if weapon.x - enemy.width <= enemy.x <= weapon.x + weapon.width:
+                        if weapon.y - enemy.height <= enemy.y <= weapon.y + weapon.height:
+                            self.game.current_level.objects.remove(enemy)
             if type(enemy) is HelperClass:
                 if self.game.current_level.player.x - 10 <= enemy.x <= self.game.current_level.player.x + 40:
                     if self.game.HEIGHT - 50 <= enemy.y <= self.game.HEIGHT - 40:

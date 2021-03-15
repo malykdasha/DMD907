@@ -16,5 +16,5 @@ class EnemySpawnerClass(ScriptClass):
             self.tick -= 1
 
         if self.time % self.tick == 0:
-            enemy = EnemyClass(randint(0, self.game.WIDTH), -10, randint(1, 20), self.game)
+            enemy = EnemyClass(x=randint(0, self.game.WIDTH), y=-10, vx=0, vy=randint(1, 20), game=self.game)
             self.game.current_level.objects.append(enemy)

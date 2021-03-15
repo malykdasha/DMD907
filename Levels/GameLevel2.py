@@ -9,6 +9,7 @@ from Scripts.HelperSpawner import HelperSpawnerClass
 from Scripts.CheckTouch import CheckTouchClass
 from Handlers.WeaponHandler import WeaponHandlerClass
 from Scripts.WeaponSpawner import WeaponSpawnerClass
+from Objects.Weapon import WeaponClass
 
 
 class GameLevel2(Level):
@@ -17,8 +18,9 @@ class GameLevel2(Level):
         self.player = PlayerClass(game)
         self.health = HealthClass(game)
         self.timer = TimerClass(game)
+        self.weapon = []
+        self.objects = [self.player, self.health, self.timer] + self.weapon
 
-        self.objects = [self.player, self.health, self.timer]
         player_handler = PlayerHandlerClass(game)
         weapon_handler = WeaponHandlerClass(game)
         exit_handler = ExitHandlerClass(game)

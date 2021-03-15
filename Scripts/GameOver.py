@@ -1,5 +1,6 @@
 from Scripts.Script import ScriptClass
 from Objects.Button import ButtonClass
+#d import Levels.GameLevel1
 #from Game import GameClass
 import pygame
 
@@ -10,11 +11,15 @@ class GameOverClass(ScriptClass):
         self.sound_of_death = pygame.mixer.Sound('Sources/lazha.wav')
         self.font = pygame.font.Font(None, 72)
         self.text_surface = self.font.render('GAME OVER!', True, (255, 0, 0))
-        self.mainmenu = ButtonClass(1, 360, 100, 20, 'sth', game)
+
+        def start():
+            pass
+        #     b.game.current_level = GameLevel1.GameLevel1()
+        self.mainmenu = ButtonClass(1, 360, 100, 20, 'sth', start, game)
 
     def run(self):
         self.mainmenu.draw()
-        self.mainmenu.is_pressed(None)
+        # sedinmenu.is_pressed(None)
         self.game.screen.blit(self.text_surface, (20, 160))
         self.sound_of_death.play()
         pygame.mixer.music.pause()

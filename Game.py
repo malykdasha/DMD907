@@ -1,6 +1,8 @@
 import pygame
 from Objects.Button import ButtonClass
 from Levels.MenuLevel import MenuLevel
+from Levels.GameLevel1 import GameLevel1
+from Levels.GameLevel2 import GameLevel2
 
 
 class GameClass:
@@ -49,23 +51,23 @@ class GameClass:
         for o in self.current_level.objects:
             o.draw()
 
-    def menu(self):
-        while self.is_running:
-            for events in pygame.event.get():
-                if events.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-
-            self.screen.fill(self.PURPURN)
-            start_button = ButtonClass(1, 150, 100, 20, 'self', self)
-            end_button = ButtonClass(259, 150, 100, 20, 'self', self)
-            start_button.draw()
-            start_button.write(24, 'Start game')
-            end_button.draw()
-            end_button.write(24, 'Quit game')
-            start_button.is_pressed(self.start)
-            end_button.is_pressed(self.end)
-            pygame.display.flip()
+    # def menu(self):
+    #     while self.is_running:
+    #         for events in pygame.event.get():
+    #             if events.type == pygame.QUIT:
+    #                 pygame.quit()
+    #                 quit()
+    #
+    #         self.screen.fill(self.PURPURN)
+    #         start_button = ButtonClass(1, 150, 100, 20, 'self', self)
+    #         end_button = ButtonClass(259, 150, 100, 20, 'self', self)
+    #         start_button.draw()
+    #         start_button.write(24, 'Start game')
+    #         end_button.draw()
+    #         end_button.write(24, 'Quit game')
+    #         start_button.is_pressed(self.start)
+    #         end_button.is_pressed(self.end)
+    #         pygame.display.flip()
 
     def start(self):
         self.is_pause = False
@@ -78,5 +80,5 @@ class GameClass:
                 self.draw()
             pygame.display.flip()
 
-    def end(self):
-        self.is_running = False
+    # def end(self):
+    #     self.is_running = False

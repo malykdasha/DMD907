@@ -7,10 +7,12 @@ class PlayerClass(ObjectClass):
         self.x = game.WIDTH / 2
         self.y = game.HEIGHT - 50
         self.vx = 0
+        self.width = 40
+        self.height = 20
         super().__init__(game)
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (204, 102, 102), (self.x, self.y, 40, 20))
+        pygame.draw.rect(self.game.screen, (204, 102, 102), (self.x, self.y, self.width, self.height))
 
     def update(self):
         self.x += self.vx
