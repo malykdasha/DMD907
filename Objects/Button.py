@@ -4,19 +4,21 @@ from Objects.Object import ObjectClass
 
 
 class ButtonClass(ObjectClass):
-    def __init__(self, x, y, width, height, text, function, game):
+    def __init__(self, x, y, width, height, font, text, function, game):
         super().__init__(game)
         self.x = x
         self.y = y
         self.width = width
         self.height = height
-        self.text = text
+        self.font = pygame.font.Font(None, font)
         self.function = function
+        self.text = self.font.render(text, True, (0, 0, 0))
 
     def draw(self):
         pygame.draw.rect(self.game.screen,
                          (255, 0, 200),
                          (self.x, self.y, self.width, self.height))
+        self.game.screen.blit(self.text , (self.x+self.width/10, self.y+self.height/10))
 
     def update(self):
         mouse = pygame.mouse.get_pos()
