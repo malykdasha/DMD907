@@ -3,14 +3,16 @@ import pygame
 
 
 class WeaponClass(ObjectClass):
-    def __init__(self, x, y, vy, game):
+    def __init__(self, vy, x, y, game):
+        super().__init__(game)
         self.x = x
         self.y = y
         self.vy = vy
-        super().__init__(game)
+        self.width = 2
+        self.height = 10
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (189, 134, 240), (self.x, self.y, 10, 10))
+        pygame.draw.rect(self.game.screen, (189, 134, 240), (self.x, self.y, self.width, self.height))
 
     def update(self):
         self.y += self.vy

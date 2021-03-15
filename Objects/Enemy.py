@@ -11,13 +11,15 @@ class EnemyClass(ObjectClass):
         self.y = y
         self.vy = vy
         self.vx = vx
+        self.width = 50
+        self.height = 50
         super().__init__(game)
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (200, 200, 200), (self.x, self.y, 50, 50))
+        pygame.draw.rect(self.game.screen, (200, 200, 200), (self.x, self.y, self.width, self.height))
 
     def update(self):
         self.y += self.vy
-        if self.x <= 0 or self.x >= self.game.WIDTH - 50:
+        if self.x <= 0 or self.x >= self.game.WIDTH - self.width:
             self.vx = - self.vx
         self.x += self.vx
