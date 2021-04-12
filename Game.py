@@ -1,8 +1,5 @@
 import pygame
-from Objects.Button import ButtonClass
-from Levels.MenuLevel import MenuLevel
-from Levels.GameLevel1 import GameLevel1
-from Levels.GameLevel2 import GameLevel2
+import Levels
 
 
 class GameClass:
@@ -15,7 +12,7 @@ class GameClass:
         pygame.font.init()  # для текста!
         pygame.mixer.init()  # для звука
         pygame.mixer.music.load('Sources/PPK - Ressurection .wav')
-        #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
+        # pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
@@ -26,48 +23,54 @@ class GameClass:
         self.is_running = True
         self.is_pause = True
 
-        self.current_level = MenuLevel(self)
+        self.objects = []
+        self.objects_dict = {}
+        self.scripts = []
+        self.scripts_dict = {}
+        self.handlers = []
+        self.handlers_dict = {}
+
+        self.current_level = Levels.MenuLevel(self)
+
+    def add_object(self, obj, name: str = ''):
+        self.objects.append(obj)
+        if name:
+            self.objects_dict[name] = obj
+
+    def add_handler(self, handler, name: str = ''):
+        self.handlers.append(handler)
+        if name:
+            self.handlers_dict[name] = handler
+
+    def add_script(self, script, name: str = ''):
+        self.scripts.append(script)
+        if name:
+            self.scripts_dict[name] = script
 
     def fps(self):
         self.clock.tick(self.FPS)
 
     def run_scripts(self):
-        for script in self.current_level.scripts:
+        for script in self.scripts:
             script.run()
+        for o in self.objects:
+            o.run_scripts()
 
     def events(self):
         all_events = pygame.event.get()
         # все события за текущий кадр
-        for handler in self.current_level.handlers:
+        for handler in self.handlers:
             handler.process(all_events)
 
     def update(self):
-        for o in self.current_level.objects:
+        for o in self.objects:
             o.update()
 
     def draw(self):
         self.screen.fill(self.PURPURN)
 
-        for o in self.current_level.objects:
+        for o in self.objects:
             o.draw()
-
-    # def menu(self):
-    #     while self.is_running:
-    #         for events in pygame.event.get():
-    #             if events.type == pygame.QUIT:
-    #                 pygame.quit()
-    #                 quit()
-    #
-    #         self.screen.fill(self.PURPURN)
-    #         start_button = ButtonClass(1, 150, 100, 20, 'self', self)
-    #         end_button = ButtonClass(259, 150, 100, 20, 'self', self)
-    #         start_button.draw()
-    #         start_button.write(24, 'Start game')
-    #         end_button.draw()
-    #         end_button.write(24, 'Quit game')
-    #         start_button.is_pressed(self.start)
-    #         end_button.is_pressed(self.end)
-    #         pygame.display.flip()
 
     def start(self):
         self.is_pause = False
@@ -80,5 +83,10 @@ class GameClass:
                 self.draw()
             pygame.display.flip()
 
-    # def end(self):
-    #     self.is_running = False
+    def clear(self):
+        self.objects.clear()
+        self.objects_dict.clear()
+        self.handlers.clear()
+        self.handlers_dict.clear()
+        self.scripts.clear()
+        self.scripts_dict.clear()

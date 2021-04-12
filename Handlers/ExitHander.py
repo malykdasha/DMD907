@@ -1,8 +1,8 @@
 import pygame
-from Handlers.Handler import HandlerClass
+import Handlers
 
 
-class ExitHandlerClass(HandlerClass):
+class ExitHandlerClass(Handlers.HandlerClass):
     def process(self, all_events):
         for e in all_events:
             # проверить закрытие окна

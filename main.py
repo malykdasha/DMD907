@@ -1,5 +1,5 @@
-from Game import GameClass
+import Game
 
-game = GameClass()
+game = Game.GameClass()
 # запустил конструктор
 game.start()

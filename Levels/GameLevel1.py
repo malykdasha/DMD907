@@ -1,33 +1,25 @@
-from Levels.Level import Level
-from Objects.Player import PlayerClass
-from Objects.Health import HealthClass
-from Objects.Timer import TimerClass
-from Handlers.PlayerHandler import PlayerHandlerClass
-from Handlers.ExitHander import ExitHandlerClass
-# import Scripts.CheckTouch
-from Scripts.CheckTouch import CheckTouchClass
-from Handlers.WeaponHandler import WeaponHandlerClass
-from Scripts.WeaponSpawner import WeaponSpawnerClass
-from Objects.Enemy import EnemyClass
-from Objects.Weapon import WeaponClass
-from random import randint
+import Levels
+import Objects
 
 
-class GameLevel1(Level):
-    def __init__(self, game):
+class GameLevel1(Levels.Level):
+    def __init__(self, game, count=1):
         super().__init__(game)
-        self.player = PlayerClass(game)
-        self.health = HealthClass(game)
-        self.timer = TimerClass(game)
-        self.enemy = EnemyClass(self.game.WIDTH/2, -10, 2, 0.5, game)
-        self.weapon = []
-        self.objects = [self.player, self.health, self.timer, self.enemy] + self.weapon
-
-        player_handler = PlayerHandlerClass(game)
-        weapon_handler = WeaponHandlerClass(game)
-        exit_handler = ExitHandlerClass(game)
-        self.handlers = [player_handler, exit_handler, weapon_handler]
-
-        self.check_touch = CheckTouchClass(game)
-        self.weapon_spawner = WeaponSpawnerClass(game)
-        self.scripts = [self.check_touch]
+        self.count = count
+        if count == 1:
+            # spawn enemy
+            enemy = Objects.EnemyClass((self.game.WIDTH / 2 - 20) % self.game.WIDTH,
+                                       -10,
+                                       200 * (-1), 20, game)
+            self.game.add_object(enemy)
+        elif count == 2:
+            for i in range(4):
+                enemy = Objects.EnemyClass((self.game.WIDTH / 2 - 20 * i) % self.game.WIDTH,
+                                           -10 - 10 * i,
+                                           200 * (-1) ** i, 20, game)
+                self.game.add_object(enemy)
+        elif count == 3:
+            enemy = Objects.EnemyClass((self.game.WIDTH / 2 - 20) % self.game.WIDTH,
+                                       -10 - 100,
+                                       200 * (-1), 200, game)
+            self.game.add_object(enemy)

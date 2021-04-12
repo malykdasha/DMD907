@@ -1,11 +1,16 @@
-from Handlers.Handler import HandlerClass
+import Handlers
+import Objects
 import pygame
 
 
-class WeaponHandlerClass(HandlerClass):
+class WeaponHandlerClass(Handlers.HandlerClass):
     def process(self, all_events):
         for event in all_events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    self.game.current_level.weapon_spawner.run()
-                    # self.game.current_level.weapon.append(weapon)
+                    x = self.game.objects_dict['player'].x + self.game.objects_dict['player'].width/2
+                    weapon = Objects.WeaponClass(x=x,
+                                                 y=self.game.objects_dict['player'].y,
+                                                 vy=-700,
+                                                 game=self.game)
+                    self.game.add_object(weapon)

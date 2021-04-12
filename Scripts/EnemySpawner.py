@@ -1,9 +1,9 @@
-from Scripts.Script import ScriptClass
-from Objects.Enemy import EnemyClass
+import Objects
+import Scripts
 from random import randint
 
 
-class EnemySpawnerClass(ScriptClass):
+class EnemySpawnerClass(Scripts.ScriptClass):
     def __init__(self, game):
         self.tick = 20
         self.time = 0
@@ -16,5 +16,5 @@ class EnemySpawnerClass(ScriptClass):
             self.tick -= 1
 
         if self.time % self.tick == 0:
-            enemy = EnemyClass(x=randint(0, self.game.WIDTH), y=-10, vx=0, vy=randint(1, 20), game=self.game)
+            enemy = Objects.EnemyClass(x=randint(0, self.game.WIDTH), y=-10, vx=0, vy=randint(1, 5), game=self.game)
             self.game.current_level.objects.append(enemy)

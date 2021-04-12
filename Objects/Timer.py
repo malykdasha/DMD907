@@ -1,8 +1,8 @@
 import pygame
-from Objects.Object import ObjectClass
+import Objects
 
 
-class TimerClass(ObjectClass):
+class TimerClass(Objects.ObjectClass):
     def __init__(self, game):
         super().__init__(game)
         self.start_time = pygame.time.get_ticks()

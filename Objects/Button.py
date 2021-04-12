@@ -1,9 +1,8 @@
 import pygame
+import Objects
 
-from Objects.Object import ObjectClass
 
-
-class ButtonClass(ObjectClass):
+class ButtonClass(Objects.ObjectClass):
     def __init__(self, x, y, width, height, font, text, function, game):
         super().__init__(game)
         self.x = x
@@ -18,7 +17,7 @@ class ButtonClass(ObjectClass):
         pygame.draw.rect(self.game.screen,
                          (255, 0, 200),
                          (self.x, self.y, self.width, self.height))
-        self.game.screen.blit(self.text , (self.x+self.width/10, self.y+self.height/10))
+        self.game.screen.blit(self.text, (self.x + self.width / 10, self.y + self.height / 10))
 
     def update(self):
         mouse = pygame.mouse.get_pos()

@@ -2,7 +2,7 @@ import Objects
 import pygame
 
 
-class WeaponClass(Objects.ObjectClass):
+class EnemyWeapon(Objects.ObjectClass):
     def __init__(self, vy, x, y, game):
         super().__init__(game)
         self.x = x
