@@ -13,3 +13,4 @@ class CheckTouchEnemy(Scripts.ScriptClass):
                 if player_weapon.x - self.enemy.width <= self.enemy.x <= player_weapon.x + player_weapon.width:
                     if player_weapon.y - self.enemy.height <= self.enemy.y <= player_weapon.y + player_weapon.height:
                         self.game.objects.remove(self.enemy)
+                        self.game.objects.remove(player_weapon)

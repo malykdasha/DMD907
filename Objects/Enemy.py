@@ -13,8 +13,8 @@ class EnemyClass(Objects.ObjectClass):
         self.y = y
         self.vy = vy
         self.vx = vx
-        self.width = 50
-        self.height = 50
+        self.width = 40
+        self.height = 40
         self.scripts.append(Scripts.EnemyWeaponSpawner(self, game))
         self.scripts.append(Scripts.CheckTouchEnemy(self, game))
         self.sound_of_touch = pygame.mixer.Sound('Sources/Запись.wav')

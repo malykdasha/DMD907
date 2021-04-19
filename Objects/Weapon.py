@@ -12,7 +12,7 @@ class WeaponClass(Objects.ObjectClass):
         self.height = 10
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (189, 134, 240), (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(self.game.screen, (255, 0, 0), (self.x, self.y, self.width, self.height))
 
     def update(self):
         self.y += self.vy / self.game.FPS

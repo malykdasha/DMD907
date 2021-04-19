@@ -16,3 +16,5 @@ class HelperClass(Objects.ObjectClass):
 
     def update(self):
         self.y += self.vy / self.game.FPS
+        if self.y >= self.game.HEIGHT:
+            self.game.objects.remove(self)
