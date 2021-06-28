@@ -12,7 +12,7 @@ class GameClass:
         pygame.font.init()  # для текста!
         pygame.mixer.init()  # для звука
         pygame.mixer.music.load('Sources/PPK - Ressurection .wav')
-        # pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
+        #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
