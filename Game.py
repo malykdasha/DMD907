@@ -16,6 +16,7 @@ class GameClass:
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.sc = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
         self.PURPURN = (0, 0, 100)
@@ -68,6 +69,7 @@ class GameClass:
 
     def draw(self):
         self.screen.fill(self.PURPURN)
+        self.sc.fill(self.PURPURN)
 
         for o in self.objects:
             o.draw()

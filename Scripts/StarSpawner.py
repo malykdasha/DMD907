@@ -12,9 +12,9 @@ class StarSpawnerClass(Scripts.ScriptClass):
     def run(self):
         self.time += 1
 
-        if self.tick > 15 and self.time % 60 == 0:
+        if self.tick > 15 and self.time % 5 == 0:
             self.tick -= 1
 
-        if self.time % 60 == 0:
-            star = Objects.HelperClass(randint(0, self.game.WIDTH), -10, 500, self.game)
+        if self.time % 5 == 0:
+            star = Objects.StarsClass(randint(0, self.game.WIDTH), -10, 500, self.game)
             self.game.add_object(star)

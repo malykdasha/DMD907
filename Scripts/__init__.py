@@ -8,3 +8,4 @@ from .NextLevel import NextLevel
 from .WeaponSpawner import WeaponSpawnerClass
 from .CheckTouchEnemy import CheckTouchEnemy
 from .CheckTouchHelper import CheckTouchHelper
+from .StarSpawner import StarSpawnerClass

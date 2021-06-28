@@ -10,6 +10,7 @@ from Scripts.CheckTouch import CheckTouchClass
 from Handlers.WeaponHandler import WeaponHandlerClass
 from Scripts.WeaponSpawner import WeaponSpawnerClass
 from Scripts.EnemyWeaponSpawner import EnemyWeaponSpawner
+from Scripts.StarSpawner import StarSpawnerClass
 import Game
 from Objects.Weapon import WeaponClass
 
@@ -35,4 +36,6 @@ class GameLevel2(Level):
         self.check_touch = CheckTouchClass(game)
         self.weapon_spawner = WeaponSpawnerClass(game)
         self.enemy_weapon_spawner = EnemyWeaponSpawner(game)
-        self.scripts = [self.enemy_spawner, self.helper_spawner, self.check_touch, self.enemy_weapon_spawner]
+        self.star_spawner = StarSpawnerClass(game)
+        self.scripts = [self.enemy_spawner, self.helper_spawner, self.check_touch, self.enemy_weapon_spawner,
+        self.star_spawner]
