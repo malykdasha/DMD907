@@ -12,8 +12,8 @@ class PlayerClass(Objects.ObjectClass):
         self.vy = 0
         self.width = 40
         self.height = 20
-        self.max_v = 500
-        self.a = 150
+        self.max_v = 300
+        self.a = 80
         self.ax = 0
         self.ay = 0
         self.scripts.append(Scripts.CheckTouchClass(game))
