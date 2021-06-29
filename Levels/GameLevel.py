@@ -19,6 +19,8 @@ class GameLevel(Levels.Level):
         player_handler = Handlers.PlayerHandlerClass(game)
         weapon_handler = Handlers.WeaponHandlerClass(game)
         exit_handler = Handlers.ExitHandlerClass(game)
+        esc_handler = Handlers.EscHandlerClass(game)
+        self.game.add_handler(esc_handler)
         self.game.add_handler(player_handler)
         self.game.add_handler(weapon_handler)
         self.game.add_handler(exit_handler)
