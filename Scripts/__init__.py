@@ -2,7 +2,6 @@ from .Script import ScriptClass
 from .CheckTouch import CheckTouchClass
 from .EnemySpawner import EnemySpawnerClass
 from .EnemyWeaponSpawner import EnemyWeaponSpawner
-from .GameOver import GameOverClass
 from .HelperSpawner import HelperSpawnerClass
 from .NextLevel import NextLevel
 from .WeaponSpawner import WeaponSpawnerClass

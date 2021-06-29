@@ -11,4 +11,5 @@ class ObjectClass:
 
     def run_scripts(self):
         for script in self.scripts:
-            script.run()
+            if script.run():
+                return True

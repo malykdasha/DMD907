@@ -8,3 +8,4 @@ from .Player import PlayerClass
 from .Weapon import WeaponClass
 from .Timer import TimerClass
 from .Stars import StarsClass
+from .Text import TextClass

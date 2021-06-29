@@ -33,5 +33,6 @@ class EnemyClass(Objects.ObjectClass):
         self.x += self.vx / self.game.FPS
         if self.y >= self.game.HEIGHT:
             self.game.objects.remove(self)
-            self.game.objects_dict['health'].remove()
             self.sound_of_touch.play()
+            if self.game.objects_dict['health'].remove():
+                return True

@@ -24,7 +24,6 @@ class GameClass:
         self.nlo_img = pygame.image.load('Sources/nlo.png').convert_alpha()
 
         self.is_running = True
-        self.is_pause = True
 
         self.objects = []
         self.objects_dict = {}
@@ -55,9 +54,11 @@ class GameClass:
 
     def run_scripts(self):
         for script in self.scripts:
-            script.run()
+            if script.run():
+                return
         for o in self.objects:
-            o.run_scripts()
+            if o.run_scripts():
+                return
 
     def events(self):
         all_events = pygame.event.get()
@@ -67,7 +68,8 @@ class GameClass:
 
     def update(self):
         for o in self.objects:
-            o.update()
+            if o.update():
+                break
 
     def draw(self):
         self.screen.fill(self.PURPURN)
@@ -77,14 +79,12 @@ class GameClass:
             o.draw()
 
     def start(self):
-        self.is_pause = False
         while self.is_running:
             self.fps()
             self.run_scripts()
             self.events()
-            if not self.is_pause:
-                self.update()
-                self.draw()
+            self.update()
+            self.draw()
             pygame.display.flip()
 
     def clear(self):

@@ -1,6 +1,6 @@
 import pygame
 import Objects
-import Scripts
+import Levels
 
 
 class HealthClass(Objects.ObjectClass):
@@ -20,8 +20,8 @@ class HealthClass(Objects.ObjectClass):
     def remove(self):
         self.value -= 1
         if self.value == 0:
-            self.game.is_pause = True
-            Scripts.GameOverClass(self.game).run()
+            self.game.current_level = Levels.GameOver(self.game)
+            return True
 
     def draw(self):
         for i in range(self.value):

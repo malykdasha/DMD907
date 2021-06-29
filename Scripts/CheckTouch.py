@@ -15,9 +15,10 @@ class CheckTouchClass(Scripts.ScriptClass):
                         <= self.game.objects_dict['player'].x + self.game.objects_dict['player'].width:
                     if self.game.objects_dict['player'].y - enemy.height <= enemy.y \
                             <= self.game.objects_dict['player'].y + self.game.objects_dict['player'].height:
-                        self.game.objects_dict['health'].remove()
                         self.game.objects.remove(enemy)
                         self.sound_of_touch.play()
+                        if self.game.objects_dict['health'].remove():
+                            return True
 
         for enemy_weapon in self.game.objects:
             if type(enemy_weapon) == Objects.EnemyWeapon:
@@ -25,6 +26,7 @@ class CheckTouchClass(Scripts.ScriptClass):
                         <= self.game.objects_dict['player'].x + self.game.objects_dict['player'].width:
                     if self.game.objects_dict['player'].y - enemy_weapon.height <= enemy_weapon.y \
                             <= self.game.objects_dict['player'].y + self.game.objects_dict['player'].height:
-                        self.game.objects_dict['health'].remove()
                         self.game.objects.remove(enemy_weapon)
                         self.sound_of_touch.play()
+                        if self.game.objects_dict['health'].remove():
+                            return True
