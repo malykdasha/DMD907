@@ -1,5 +1,6 @@
 import pygame
 import Levels
+from random import randint
 
 
 class GameClass:
@@ -11,21 +12,27 @@ class GameClass:
         pygame.init()
         pygame.font.init()  # для текста!
         pygame.mixer.init()  # для звука
-        pygame.mixer.music.load('Sources/PPK - Ressurection .wav')
-        #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
+        pygame.mixer.music.load('Sources/Sounds/PPK - Ressurection .wav')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
-        self.sound_of_touch = pygame.mixer.Sound('Sources/Запись.wav')
-        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
-        self.sc = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.sound_of_touch = pygame.mixer.Sound('Sources/Sounds/Запись.wav')
+        self.org_screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.screen = self.org_screen.copy()
+        self.delta_x = 0
+        self.delta_y = 0
+        self.shake_ticks = 0
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
         self.PURPURN = (0, 0, 100)
-        self.nlo_img = pygame.image.load('Sources/nlo.png').convert_alpha()
-
+        self.nlo_img = pygame.image.load('Sources/Images/nlo.png').convert_alpha()
+        self.bullet_img = pygame.image.load('Sources/Images/bullet.png').convert_alpha()
+        self.background_image = pygame.image.load('Sources/Images/фон.jpg').convert_alpha()
+        self.background_image = pygame.transform.scale(self.background_image, (self.WIDTH, self.HEIGHT))
         self.is_running = True
 
         self.score = 'score.data'
+        with open(self.score, 'w+'):
+            pass
 
         self.objects = []
         self.objects_dict = {}
@@ -75,10 +82,19 @@ class GameClass:
 
     def draw(self):
         self.screen.fill(self.PURPURN)
-        self.sc.fill(self.PURPURN)
+        self.screen.blit(self.background_image, (0, 0))
 
         for o in self.objects:
             o.draw()
+        if self.shake_ticks > 0:
+            self.shake_ticks -= 1
+            if self.shake_ticks % 5 == 0:
+                self.delta_x = randint(-10, 10)
+                self.delta_y = randint(-10, 10)
+        else:
+            self.delta_x = 0
+            self.delta_y = 0
+        self.org_screen.blit(self.screen, (self.delta_x, self.delta_y))
 
     def start(self):
         while self.is_running:

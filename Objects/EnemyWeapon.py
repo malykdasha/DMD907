@@ -8,11 +8,13 @@ class EnemyWeapon(Objects.ObjectClass):
         self.x = x
         self.y = y
         self.vy = vy
-        self.width = 5
-        self.height = 30
+        self.width = 50
+        self.height = 50
+        self.img = self.game.bullet_img
+        self.img = pygame.transform.scale(self.img, (self.width, self.height))
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (255, 31, 0), (self.x, self.y, self.width, self.height))
+        self.game.screen.blit(self.img, (self.x, self.y))
 
     def update(self):
         self.y += self.vy / self.game.FPS

@@ -24,5 +24,5 @@ class GameOver(Levels.Level):
             button.game.current_level = Levels.MenuLevel(button.game)
         self.game.add_object(Objects.ButtonClass(1, 360, 100, 20, 20, 'menu', start, game))
 
-        sound_of_death = pygame.mixer.Sound('Sources/lazha.wav')
+        sound_of_death = pygame.mixer.Sound('Sources/Sounds/lazha.wav')
         sound_of_death.play()

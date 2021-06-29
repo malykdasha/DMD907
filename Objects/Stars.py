@@ -10,7 +10,7 @@ class StarsClass(Objects.ObjectClass):
         self.vy = vy
 
     def draw(self):
-        pygame.draw.circle(self.game.sc, (255, 255, 0), (self.x, self.y), 1)
+        pygame.draw.circle(self.game.screen, (255, 255, 0), (self.x, self.y), 1)
 
     def update(self):
         self.y += self.vy / self.game.FPS

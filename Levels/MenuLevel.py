@@ -23,15 +23,23 @@ class MenuLevel(Levels.Level):
         def start3(button):
             button.game.current_level = Levels.GameLevel(button.game, 3)
 
-        score = [0]
-        # self.game.add_object(Objects.TextClass(game, 20, 'Max score', (0, 250, 80), 120, 5))
-        # self.game.add_object(Objects.TextClass(game, 20, str(score[0]), (0, 200, 30), 120, 15))
         button_width = 200
         button_height = 60
         font_size = 50
         left = (game.WIDTH - button_width) / 2
         delta = button_height + 10
         start = 10
+
+        file = open('score.data', 'w+')
+        score = [0] * 4
+        for i, line in enumerate(file):
+            score[i] = int(line)
+        self.game.add_object(Objects.TextClass(game, 20, 'Max score', (0, 250, 80), 285, start))
+        self.game.add_object(Objects.TextClass(game, 20, str(score[0]), (0, 200, 30), 290, start + 20))
+        self.game.add_object(Objects.TextClass(game, 20, str(score[1]), (0, 200, 30), 290, start + 20 + delta))
+        self.game.add_object(Objects.TextClass(game, 20, str(score[2]), (0, 200, 30), 290, start + 20 + 2 * delta))
+        self.game.add_object(Objects.TextClass(game, 20, str(score[3]), (0, 200, 30), 290, start + 20 + 3 * delta))
+
         self.game.add_object(Objects.ButtonClass(left, start, button_width, button_height, font_size,
                                                  'Start game', start0, game), 'game start')
         self.game.add_object(Objects.ButtonClass(left, start + delta, button_width, button_height, font_size,

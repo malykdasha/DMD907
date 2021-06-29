@@ -9,10 +9,10 @@ class HelperClass(Objects.ObjectClass):
         self.x = x
         self.y = y
         self.vy = vy
-        self.width = 20
-        self.height = 20
+        self.width = 40
+        self.height = 40
         self.scripts.append(Scripts.CheckTouchHelper(game))
-        self.img = pygame.image.load('Sources/star.png').convert_alpha()
+        self.img = pygame.image.load('Sources/Images/star.png').convert_alpha()
         self.img = pygame.transform.scale(self.img, (self.width, self.height))
 
     def draw(self):

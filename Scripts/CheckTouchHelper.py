@@ -9,7 +9,7 @@ class CheckTouchHelper(Scripts.ScriptClass):
     def run(self):
         for helper in self.game.objects:
             if type(helper) is Objects.HelperClass:
-                if self.game.objects_dict['player'].x + helper.width\
+                if self.game.objects_dict['player'].x - helper.width\
                         <= helper.x <= self.game.objects_dict['player'].x + self.game.objects_dict['player'].width:
                     if self.game.objects_dict['player'].y - helper.height <= helper.y \
                             <= self.game.objects_dict['player'].y + self.game.objects_dict['player'].height:

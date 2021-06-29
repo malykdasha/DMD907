@@ -18,7 +18,7 @@ class PlayerClass(Objects.ObjectClass):
         self.ay = 0
         self.scripts.append(Scripts.CheckTouchClass(game))
 
-        self.img = pygame.image.load('Sources/rocket.png').convert_alpha()
+        self.img = pygame.image.load('Sources/Images/rocket.png').convert_alpha()
         self.img = pygame.transform.scale(self.img, (self.width, self.height))
 
     def draw(self):
