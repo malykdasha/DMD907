@@ -15,11 +15,13 @@ class GameClass:
         #pygame.mixer.music.load('Sources/8-Bit Universe - Billie Jean.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
+        self.sound_of_touch = pygame.mixer.Sound('Sources/Запись.wav')
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         self.sc = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("DMD907")
         self.clock = pygame.time.Clock()
         self.PURPURN = (0, 0, 100)
+        self.nlo_img = pygame.image.load('Sources/nlo.png').convert_alpha()
 
         self.is_running = True
         self.is_pause = True

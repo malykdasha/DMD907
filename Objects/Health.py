@@ -10,6 +10,8 @@ class HealthClass(Objects.ObjectClass):
         self.radius = 10
         self.value = 10
         super().__init__(game)
+        self.img = pygame.image.load('Sources/heart.png').convert_alpha()
+        self.img = pygame.transform.scale(self.img, (self.radius * 2, self.radius * 2))
 
     def add(self):
         if self.value != 10:
@@ -23,4 +25,5 @@ class HealthClass(Objects.ObjectClass):
 
     def draw(self):
         for i in range(self.value):
-            pygame.draw.circle(self.game.screen, (0, 0, 0), ((i + 1) * 25, self.y), self.radius)
+            self.game.screen.blit(self.img, ((i + 1) * 25, self.y))
+            # pygame.draw.circle(self.game.screen, (0, 0, 0), ((i + 1) * 25, self.y), self.radius)

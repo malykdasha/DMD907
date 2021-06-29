@@ -8,7 +8,7 @@ class MenuLevel(Levels.Level):
         super().__init__(game)
 
         def start(button):
-            button.game.current_level = Levels.GameLevel(button.game, 1)
+            button.game.current_level = Levels.GameLevel2(button.game)
 
         def exit(button):
             self.game.is_running = False

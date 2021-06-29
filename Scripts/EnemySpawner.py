@@ -5,9 +5,9 @@ from random import randint
 
 class EnemySpawnerClass(Scripts.ScriptClass):
     def __init__(self, game):
+        super().__init__(game)
         self.tick = 20
         self.time = 0
-        super().__init__(game)
 
     def run(self):
         self.time += 1
@@ -15,6 +15,6 @@ class EnemySpawnerClass(Scripts.ScriptClass):
         if self.tick > 15 and self.time % 60 == 0:
             self.tick -= 1
 
-        if self.time % self.tick == 0:
-            enemy = Objects.EnemyClass(x=randint(0, self.game.WIDTH), y=-10, vx=0, vy=randint(1, 5), game=self.game)
-            self.game.current_level.objects.append(enemy)
+        if self.time % 50 == 0:
+            enemy = Objects.EnemyClass(x=randint(0, self.game.WIDTH * 0.5), y=-10, vx=300, vy=randint(20, 40), game=self.game)
+            self.game.add_object(enemy)

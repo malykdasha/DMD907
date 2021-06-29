@@ -9,10 +9,15 @@ class HelperClass(Objects.ObjectClass):
         self.x = x
         self.y = y
         self.vy = vy
+        self.width = 20
+        self.height = 20
         self.scripts.append(Scripts.CheckTouchHelper(game))
+        self.img = pygame.image.load('Sources/star.png').convert_alpha()
+        self.img = pygame.transform.scale(self.img, (self.width, self.height))
 
     def draw(self):
-        pygame.draw.rect(self.game.screen, (70, 120, 70), (self.x, self.y, 10, 10))
+        self.game.screen.blit(self.img, (self.x, self.y))
+        # pygame.draw.rect(self.game.screen, (70, 120, 70), (self.x, self.y, 10, 10))
 
     def update(self):
         self.y += self.vy / self.game.FPS

@@ -16,5 +16,5 @@ class HelperSpawnerClass(Scripts.ScriptClass):
             self.tick -= 1
 
         if self.time % 300 == 0:
-            helper = Objects.HelperClass(randint(0, self.game.WIDTH), -10, 500, self.game)
+            helper = Objects.HelperClass(randint(0, self.game.WIDTH), -10, 200, self.game)
             self.game.add_object(helper)

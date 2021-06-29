@@ -27,6 +27,6 @@ class GameLevel(Levels.Level):
         self.game.add_script(helper_spawner)
         next_level = Scripts.NextLevel(game)
         self.game.add_script(next_level)
-        starspawner = Scripts.StarSpawnerClass(game)
-        self.game.add_script(starspawner)
+        star_spawner = Scripts.StarSpawnerClass(game)
+        self.game.add_script(star_spawner)
         self.game.current_level = Levels.GameLevel1(game)
