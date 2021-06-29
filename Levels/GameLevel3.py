@@ -1,33 +1,32 @@
-from Levels.Level import Level
-from Objects.Player import PlayerClass
-from Objects.Health import HealthClass
-from Objects.Timer import TimerClass
-from Handlers.PlayerHandler import PlayerHandlerClass
-from Handlers.ExitHander import ExitHandlerClass
-# import Scripts.CheckTouch
-from Scripts.CheckTouch import CheckTouchClass
-from Handlers.WeaponHandler import WeaponHandlerClass
-from Scripts.WeaponSpawner import WeaponSpawnerClass
-from Objects.Enemy import EnemyClass
-from Objects.Weapon import WeaponClass
-from random import randint
+import Levels
+import Handlers
+import Objects
+import Scripts
 
 
-class GameLevel3(Level):
+class GameLevel3(Levels.Level):
     def __init__(self, game):
         super().__init__(game)
-        self.player = PlayerClass(game)
-        self.health = HealthClass(game)
-        self.timer = TimerClass(game)
-        self.enemy = EnemyClass(self.game.WIDTH/2, -10, 5, 2, game)
-        self.weapon = []
-        self.objects = [self.player, self.health, self.timer, self.enemy] + self.weapon
+        self.game.clear()
+        player = Objects.PlayerClass(game)
+        health = Objects.HealthClass(game)
+        timer = Objects.TimerClass(game)
+        self.game.add_object(player, 'player')
+        self.game.add_object(health, 'health')
+        self.game.add_object(timer, 'timer')
 
-        player_handler = PlayerHandlerClass(game)
-        weapon_handler = WeaponHandlerClass(game)
-        exit_handler = ExitHandlerClass(game)
-        self.handlers = [player_handler, exit_handler, weapon_handler]
+        player_handler = Handlers.PlayerHandlerClass(game)
+        weapon_handler = Handlers.WeaponHandlerClass(game)
+        exit_handler = Handlers.ExitHandlerClass(game)
+        esc_handler = Handlers.EscHandlerClass(game)
+        self.game.add_handler(esc_handler)
+        self.game.add_handler(player_handler)
+        self.game.add_handler(weapon_handler)
+        self.game.add_handler(exit_handler)
 
-        self.check_touch = CheckTouchClass(game)
-        self.weapon_spawner = WeaponSpawnerClass(game)
-        self.scripts = [self.check_touch]
+        helper_spawner = Scripts.HelperSpawnerClass(game)
+        self.game.add_script(helper_spawner)
+        star_spawner = Scripts.StarSpawnerClass(game)
+        self.game.add_script(star_spawner)
+        enemy_spawner = Scripts.EnemySpawnerClass(game, 700, 50, 3)
+        self.game.add_script(enemy_spawner)

@@ -8,20 +8,20 @@ class MenuLevel(Levels.Level):
         super().__init__(game)
         self.game.clear()
 
-        def start0(button):
-            button.game.current_level = Levels.GameLevel2(button.game)
-
         def exit_function(button):
             self.game.is_running = False
 
+        def start0(button):
+            button.game.current_level = Levels.GameLevel0(button.game)
+
         def start1(button):
-            button.game.current_level = Levels.GameLevel(button.game, 1)
+            button.game.current_level = Levels.GameLevel1(button.game)
 
         def start2(button):
-            button.game.current_level = Levels.GameLevel(button.game, 2)
+            button.game.current_level = Levels.GameLevel2(button.game)
 
         def start3(button):
-            button.game.current_level = Levels.GameLevel(button.game, 3)
+            button.game.current_level = Levels.GameLevel3(button.game)
 
         button_width = 200
         button_height = 60
@@ -34,21 +34,20 @@ class MenuLevel(Levels.Level):
         score = [0] * 4
         for i, line in enumerate(file):
             score[i] = int(line)
-        self.game.add_object(Objects.TextClass(game, 20, 'Max score', (0, 250, 80), 285, start))
-        self.game.add_object(Objects.TextClass(game, 20, str(score[0]), (0, 200, 30), 290, start + 20))
-        self.game.add_object(Objects.TextClass(game, 20, str(score[1]), (0, 200, 30), 290, start + 20 + delta))
-        self.game.add_object(Objects.TextClass(game, 20, str(score[2]), (0, 200, 30), 290, start + 20 + 2 * delta))
-        self.game.add_object(Objects.TextClass(game, 20, str(score[3]), (0, 200, 30), 290, start + 20 + 3 * delta))
+        self.game.add_object(Objects.TextClass(game, 30, 'Max', (255, 100, 212), 285, start))
+        self.game.add_object(Objects.TextClass(game, 30, str(score[0]), (255, 100, 212), 290, start + 20))
+        self.game.add_object(Objects.TextClass(game, 30, str(score[1]), (255, 100, 212), 290, start + 20 + delta))
+        self.game.add_object(Objects.TextClass(game, 30, str(score[2]), (255, 100, 212), 290, start + 20 + 2 * delta))
 
         self.game.add_object(Objects.ButtonClass(left, start, button_width, button_height, font_size,
-                                                 'Start game', start0, game), 'game start')
+                                                 'Easy', start1, game), 'game start1')
         self.game.add_object(Objects.ButtonClass(left, start + delta, button_width, button_height, font_size,
-                                                 'Easy', start1, game), 'game start')
+                                                 'Medium', start2, game), 'game start2')
         self.game.add_object(Objects.ButtonClass(left, start + 2 * delta, button_width, button_height, font_size,
-                                                 'Medium', start2, game), 'game start')
+                                                 'Hard', start3, game), 'game start3')
         self.game.add_object(Objects.ButtonClass(left, start + 3 * delta, button_width, button_height, font_size,
-                                                 'Hard', start3, game), 'game start')
+                                                 'Relax', start0, game), 'game start0')
         self.game.add_object(Objects.ButtonClass(left, start + 4 * delta, button_width, button_height, font_size,
-                                                 'Exit game', exit_function, game), 'game start')
+                                                 'Exit game', exit_function, game), 'game exit')
 
         self.game.add_handler(Handlers.ExitHandlerClass(game), 'exit')

@@ -16,8 +16,8 @@ class ButtonClass(Objects.ObjectClass):
         self.x_delta = (self.width - self.font.size(self.text_)[0]) / 2
         self.y_delta = (self.height - self.font.size(self.text_)[1]) / 2
 
-        self.color_normal = (255, 0, 200)
-        self.color_in = (200, 100, 150)
+        self.color_normal = (255, 201, 247)
+        self.color_in = (200, 100, 200)
         self.color = self.color_normal
 
     def draw(self):

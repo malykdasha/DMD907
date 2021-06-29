@@ -8,7 +8,7 @@ from random import randint
 
 
 class EnemyClass(Objects.ObjectClass):
-    def __init__(self, x, y, vx, vy, game):
+    def __init__(self, x, y, vx, vy, game, health):
         super().__init__(game)
         self.x = x
         self.y = y
@@ -21,6 +21,8 @@ class EnemyClass(Objects.ObjectClass):
         self.sound_of_touch = self.game.sound_of_touch
         self.img = self.game.nlo_img
         self.img = pygame.transform.scale(self.img, (self.width, self.height))
+
+        self.health = health
 
     def draw(self):
         self.game.screen.blit(self.img, (self.x, self.y))

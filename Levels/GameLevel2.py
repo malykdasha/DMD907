@@ -28,5 +28,5 @@ class GameLevel2(Levels.Level):
         self.game.add_script(helper_spawner)
         star_spawner = Scripts.StarSpawnerClass(game)
         self.game.add_script(star_spawner)
-        enemy_spawner = Scripts.EnemySpawnerClass(game)
+        enemy_spawner = Scripts.EnemySpawnerClass(game, 500, 25, 2)
         self.game.add_script(enemy_spawner)
