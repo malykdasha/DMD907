@@ -25,6 +25,8 @@ class GameClass:
 
         self.is_running = True
 
+        self.score = 'score.data'
+
         self.objects = []
         self.objects_dict = {}
         self.scripts = []

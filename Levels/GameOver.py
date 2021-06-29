@@ -12,12 +12,8 @@ class GameOver(Levels.Level):
 
         game.clear()
 
-        font = pygame.font.Font(None, 72)
-        text_surface = font.render('GAME OVER!', True, (200, 40, 30))
-        text_surface_time = font.render(str(time), True, (200, 40, 30))
-
-        self.game.add_object(Objects.TextClass(game, text_surface, 20, 160))
-        self.game.add_object(Objects.TextClass(game, text_surface_time, 50, 300))
+        self.game.add_object(Objects.TextClass(game, 72, 'GAME OVER!', (200, 40, 30), 20, 160))
+        self.game.add_object(Objects.TextClass(game, 72, str(time), (200, 40, 30), 50, 300))
 
         exit_handler = Handlers.ExitHandlerClass(game)
         esc_handler = Handlers.EscHandlerClass(game)
