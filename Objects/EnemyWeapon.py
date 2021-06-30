@@ -9,7 +9,7 @@ class EnemyWeapon(Objects.ObjectClass):
         self.x = x
         self.y = y
         self.vy = vy
-        self.width = 50
+        self.width = 20
         self.height = 50
         self.img = self.game.bullet_img
         self.img = pygame.transform.scale(self.img, (self.width, self.height))

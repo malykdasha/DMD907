@@ -24,7 +24,8 @@ class HealthClass(Objects.ObjectClass):
             timer = self.game.objects_dict['timer']
             time = (pygame.time.get_ticks() - timer.start_time) / 1000
             file = open('score.data', 'w+')
-            self.game.current_level = Levels.GameOver(self.game)
+            level_diff = type(self.game.current_level)
+            self.game.current_level = Levels.GameOver(self.game, level_diff)
             return True
 
     def draw(self):

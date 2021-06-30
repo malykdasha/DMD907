@@ -5,7 +5,7 @@ import Handlers
 
 
 class GameOver(Levels.Level):
-    def __init__(self, game):
+    def __init__(self, game, level_diff):
         super().__init__(game)
         timer = game.objects_dict['timer']
         time = (pygame.time.get_ticks() - timer.start_time) / 1000
@@ -26,15 +26,12 @@ class GameOver(Levels.Level):
         self.game.add_object(Objects.ButtonClass(20, 340, 320, 40, 40, 'Menu', start, game))
 
         def restart(button):
-             if button.game.current_level == Levels.GameLevel1(button.game):
-                 game.clear()
-                 button.game.current_level = Levels.GameLevel1(button.game)
-             elif button.game.current_level == Levels.GameLevel2(button.game):
-                 game.clear()
-                 button.game.current_level = Levels.GameLevel2(button.game)
-             elif button.game.current_level == Levels.GameLevel3(button.game):
-                 game.clear()
-                 button.game.current_level = Levels.GameLevel3(button.game)
+            if level_diff is Levels.GameLevel1:
+                button.game.current_level = Levels.GameLevel1(button.game)
+            elif level_diff is Levels.GameLevel2:
+                button.game.current_level = Levels.GameLevel2(button.game)
+            elif level_diff is Levels.GameLevel3:
+                button.game.current_level = Levels.GameLevel3(button.game)
 
         self.game.add_object(Objects.ButtonClass(20, 383, 320, 40, 40, 'Restart', restart, game))
 
