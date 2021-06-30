@@ -10,7 +10,7 @@ class PlayerClass(Objects.ObjectClass):
         self.y = game.HEIGHT - 100
         self.vx = 0
         self.vy = 0
-        self.width = 50
+        self.width = 30
         self.height = 80
         self.max_v = 300
         self.a = 80

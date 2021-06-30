@@ -8,6 +8,9 @@ class MenuLevel(Levels.Level):
         super().__init__(game)
         self.game.clear()
 
+        self.game.add_object(Objects.TextClass(game, 33, 'Welcome!', (255, 100, 212), 20, 20))
+        self.game.add_object(Objects.TextClass(game, 33, 'Choose your difficulty:', (255, 100, 212), 20, 60))
+
         def exit_function(button):
             self.game.is_running = False
 
@@ -24,20 +27,20 @@ class MenuLevel(Levels.Level):
             button.game.current_level = Levels.GameLevel3(button.game)
 
         button_width = 200
-        button_height = 60
-        font_size = 50
-        left = (game.WIDTH - button_width) / 2
-        delta = button_height + 10
-        start = 10
+        button_height = 40
+        font_size = 40
+        left = 20
+        delta = button_height + 5
+        start = 100
 
         file = open('score.data', 'w+')
         score = [0] * 4
         for i, line in enumerate(file):
             score[i] = int(line)
-        self.game.add_object(Objects.TextClass(game, 30, 'Max', (255, 100, 212), 285, start))
-        self.game.add_object(Objects.TextClass(game, 30, str(score[0]), (255, 100, 212), 290, start + 20))
-        self.game.add_object(Objects.TextClass(game, 30, str(score[1]), (255, 100, 212), 290, start + 20 + delta))
-        self.game.add_object(Objects.TextClass(game, 30, str(score[2]), (255, 100, 212), 290, start + 20 + 2 * delta))
+        # self.game.add_object(Objects.TextClass(game, 30, 'MAX', (255, 100, 212), 245, start))
+        # self.game.add_object(Objects.TextClass(game, 30, str(score[0]), (255, 100, 212), 250, start + 30))
+        # self.game.add_object(Objects.TextClass(game, 30, str(score[1]), (255, 100, 212), 250, start + 20 + delta))
+        # self.game.add_object(Objects.TextClass(game, 30, str(score[2]), (255, 100, 212), 250, start + 20 + 2 * delta))
 
         self.game.add_object(Objects.ButtonClass(left, start, button_width, button_height, font_size,
                                                  'Easy', start1, game), 'game start1')

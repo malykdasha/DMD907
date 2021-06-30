@@ -5,15 +5,16 @@ import Handlers
 
 
 class GameOver(Levels.Level):
-    def __init__(self, game):
+    def __init__(self, game, level_diff):
         super().__init__(game)
         timer = game.objects_dict['timer']
         time = (pygame.time.get_ticks() - timer.start_time) / 1000
 
         game.clear()
 
-        self.game.add_object(Objects.TextClass(game, 72, 'GAME OVER!', (200, 40, 30), 20, 160))
-        self.game.add_object(Objects.TextClass(game, 72, str(time), (200, 40, 30), 50, 300))
+        self.game.add_object(Objects.TextClass(game, 72, 'GAME OVER!', (255, 100, 212), 20, 60))
+        self.game.add_object(Objects.TextClass(game, 50, 'Your score is:', (255, 100, 212), 20, 142))
+        self.game.add_object(Objects.TextClass(game, 64, str(time), (255, 100, 212), 20, 178))
 
         exit_handler = Handlers.ExitHandlerClass(game)
         esc_handler = Handlers.EscHandlerClass(game)
@@ -22,7 +23,17 @@ class GameOver(Levels.Level):
 
         def start(button):
             button.game.current_level = Levels.MenuLevel(button.game)
-        self.game.add_object(Objects.ButtonClass(1, 360, 100, 20, 20, 'menu', start, game))
+        self.game.add_object(Objects.ButtonClass(20, 340, 320, 40, 40, 'Menu', start, game))
+
+        def restart(button):
+            if level_diff is Levels.GameLevel1:
+                button.game.current_level = Levels.GameLevel1(button.game)
+            elif level_diff is Levels.GameLevel2:
+                button.game.current_level = Levels.GameLevel2(button.game)
+            elif level_diff is Levels.GameLevel3:
+                button.game.current_level = Levels.GameLevel3(button.game)
+
+        self.game.add_object(Objects.ButtonClass(20, 383, 320, 40, 40, 'Restart', restart, game))
 
         sound_of_death = pygame.mixer.Sound('Sources/Sounds/lazha.wav')
         sound_of_death.play()
