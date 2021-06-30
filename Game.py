@@ -1,6 +1,7 @@
 import pygame
 import Levels
 from random import randint
+import sys
 
 
 class GameClass:
