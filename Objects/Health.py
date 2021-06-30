@@ -6,7 +6,7 @@ import Levels
 class HealthClass(Objects.ObjectClass):
     def __init__(self, game):
         self.x = game.WIDTH / 2
-        self.y = game.HEIGHT - 20
+        self.y = game.HEIGHT - 50
         self.radius = 10
         self.value = 10
         super().__init__(game)

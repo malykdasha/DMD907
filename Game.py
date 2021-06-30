@@ -6,8 +6,8 @@ import sys
 
 class GameClass:
     def __init__(self):
-        self.WIDTH = 360  # ширина игрового окна
-        self.HEIGHT = 480  # высота игрового окна
+        self.WIDTH = 1000  # ширина игрового окна
+        self.HEIGHT = 800  # высота игрового окна
         self.FPS = 60  # частота кадров в секунду
         # создаем игру и окно
         pygame.init()

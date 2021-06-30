@@ -15,5 +15,6 @@ class CheckTouchEnemy(Scripts.ScriptClass):
                         if self.enemy.health > 1:
                             self.enemy.health -= 1
                         else:
-                            self.game.objects.remove(self.enemy)
+                            if self.enemy in self.game.objects:
+                                self.game.objects.remove(self.enemy)
                         self.game.objects.remove(player_weapon)

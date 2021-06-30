@@ -4,7 +4,7 @@ import Handlers
 
 class PlayerHandlerClass(Handlers.HandlerClass):
     def process(self, all_events):
-        acceleration = 1000
+        acceleration = 2000
         for event in all_events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT or event.key == ord('a'):
