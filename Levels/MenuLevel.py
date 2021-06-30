@@ -33,14 +33,10 @@ class MenuLevel(Levels.Level):
         delta = button_height + 5
         start = 100
 
-        file = open('score.data', 'w+')
-        score = [0] * 4
-        for i, line in enumerate(file):
-            score[i] = int(line)
-        # self.game.add_object(Objects.TextClass(game, 30, 'MAX', (255, 100, 212), 245, start))
-        # self.game.add_object(Objects.TextClass(game, 30, str(score[0]), (255, 100, 212), 250, start + 30))
-        # self.game.add_object(Objects.TextClass(game, 30, str(score[1]), (255, 100, 212), 250, start + 20 + delta))
-        # self.game.add_object(Objects.TextClass(game, 30, str(score[2]), (255, 100, 212), 250, start + 20 + 2 * delta))
+        self.game.add_object(Objects.TextClass(game, 30, 'MAX', (255, 100, 212), 245, start))
+        self.game.add_object(Objects.TextClass(game, 30, str(game.score[0]), (255, 100, 212), 250, start + 30))
+        self.game.add_object(Objects.TextClass(game, 30, str(game.score[1]), (255, 100, 212), 250, start + 20 + delta))
+        self.game.add_object(Objects.TextClass(game, 30, str(game.score[2]), (255, 100, 212), 250, start + 20 + 2 * delta))
 
         self.game.add_object(Objects.ButtonClass(left, start, button_width, button_height, font_size,
                                                  'Easy', start1, game), 'game start1')

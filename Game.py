@@ -31,9 +31,11 @@ class GameClass:
         self.background_image = pygame.transform.scale(self.background_image, (self.WIDTH, self.HEIGHT))
         self.is_running = True
 
-        self.score = 'score.data'
-        with open(self.score, 'w+'):
-            pass
+        file = open('score.data', 'r+')
+        self.score = [0] * 3
+        for i, line in enumerate(file):
+            self.score[i] = float(line)
+        file.close()
 
         self.objects = []
         self.objects_dict = {}

@@ -9,6 +9,17 @@ class GameOver(Levels.Level):
         super().__init__(game)
         timer = game.objects_dict['timer']
         time = (pygame.time.get_ticks() - timer.start_time) / 1000
+        if level_diff is Levels.GameLevel1:
+            game.score[0] = max(time, game.score[0])
+        elif level_diff is Levels.GameLevel2:
+            game.score[1] = max(time, game.score[1])
+        elif level_diff is Levels.GameLevel3:
+            game.score[2] = max(time, game.score[2])
+
+        file = open('score.data', 'w+')
+        for s in game.score:
+            file.write(str(s) + '\n')
+        file.close()
 
         game.clear()
 
